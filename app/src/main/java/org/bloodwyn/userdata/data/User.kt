@@ -1,6 +1,5 @@
 package org.bloodwyn.userdata.data
 
-import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class User(
@@ -20,7 +19,7 @@ data class User(
         var city: String,
         var street: String,
         var state: String,
-        var postcode: Int)
+        var postcode: String)
 
     data class Age(var birthdayDate: Date, var age: Int)
 

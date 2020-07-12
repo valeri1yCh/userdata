@@ -6,4 +6,8 @@ interface UserServiceExtended {
 
     fun getUsersWithNationality(nation: String): List<String>
 
+    fun getUsersByName(name: String): List<User>
+
+    fun fundUsers(keyword: String): List<User>
+
 }

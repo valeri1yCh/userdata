@@ -1,18 +1,11 @@
 package org.bloodwyn.userdata.data
 
-import org.bloodwyn.userdata.data.remote.services.SimpleNetworkUserServiceImpl
-import java.util.*
+import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Observable
 
-class UserRepository : UserService {
+interface UserRepository {
 
-    private val userService: SimpleNetworkUserServiceImpl
+    fun getUsers() : Observable<List<User>>
 
-    init {
-        userService =
-            SimpleNetworkUserServiceImpl()
-    }
-
-    override fun getUsers(): List<User> {
-        return Collections.emptyList()
-    }
+    fun getUserInfo(userId: String): Maybe<User>
 }

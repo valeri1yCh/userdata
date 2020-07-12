@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val BASE_URL = "https://randomuser.me/api/"
 private val defaultHttpClient = OkHttpClient()
 
-class SimpleNetworkUserServiceImpl(val httpClient: OkHttpClient = defaultHttpClient) {
+class SimpleNetworkUserServiceImpl(val httpClient: OkHttpClient = defaultHttpClient) : NetworkSimpleUserService {
 
     private lateinit var userService: NetworkSimpleUserService
 
@@ -25,7 +25,7 @@ class SimpleNetworkUserServiceImpl(val httpClient: OkHttpClient = defaultHttpCli
         userService = retrofit.create(NetworkSimpleUserService::class.java)
     }
 
-    fun getUsers(limit: Int): Observable<Response<Users>> {
-        return userService.findUsers(limit)
+    override fun getUsers(limit: Int): Observable<Response<Users>> {
+        return userService.getUsers(limit)
     }
 }
