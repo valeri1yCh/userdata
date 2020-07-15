@@ -2,6 +2,7 @@ package org.bloodwyn.userdata.data
 
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import org.bloodwyn.userdata.data.remote.UserTransformer
 import org.bloodwyn.userdata.data.remote.services.SimpleNetworkUserServiceImpl
 import java.util.*
@@ -13,7 +14,7 @@ class UserRepositoryImpl : UserRepository {
         SimpleNetworkUserServiceImpl()
 
 
-    override fun getUsers(): Observable<List<User>> {
+    override fun getUsers(): Single<List<User>> {
         val transformer = UserTransformer()
         return userService.getUsers(10)
             .map { response ->

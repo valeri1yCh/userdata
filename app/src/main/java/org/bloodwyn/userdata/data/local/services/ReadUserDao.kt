@@ -10,7 +10,7 @@ import org.bloodwyn.userdata.data.local.DbUser
  * from db
  */
 @Dao
-interface UserDao {
+interface ReadUserDao {
 
     @Query("SELECT * FROM user")
     fun findAllUsers(): Observable<List<DbUser>>

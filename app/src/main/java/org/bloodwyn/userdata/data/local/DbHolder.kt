@@ -10,6 +10,7 @@ object DbHolder {
     private var appDatabase: UserInfoAppDatabase? = null
 
     fun getDatabase(): UserInfoAppDatabase {
+
         return requireNotNull(appDatabase) { "Db has not been created"}
     }
 

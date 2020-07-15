@@ -17,7 +17,7 @@ class UserServiceImplTest {
     @Test
     fun getUsersTest() {
         val response = userService.getUsers(10)
-            .blockingFirst()
+            .blockingGet()
         println(response.code())
         println(response.body())
 

@@ -25,7 +25,7 @@ class NetworkSimpleUserServiceTest {
 
     @Test
     fun getUsers_shouldReturnNonEmptyResult() {
-        val observableResponse: Observable<Response<Users>> = networkUserService.getUsers(5)
+        val observableResponse = networkUserService.getUsers(5)
         observableResponse.subscribe { response ->
             assertEquals(response.code(), 200)
             val networkResponse = response.body()

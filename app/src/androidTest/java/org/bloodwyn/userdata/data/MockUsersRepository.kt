@@ -2,6 +2,7 @@ package org.bloodwyn.userdata.data
 
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 
 /**
  * The mock implementation of [UserRepository]
@@ -10,9 +11,8 @@ class MockUsersRepository : UserRepository {
 
     var userList: List<User> = generateRandomUsers()
 
-    override fun getUsers(): Observable<List<User>> {
-
-        return Observable.just(userList)
+    override fun getUsers(): Single<List<User>> {
+        return Single.just(userList)
     }
 
     override fun getUserInfo(userId: String): Maybe<User> {

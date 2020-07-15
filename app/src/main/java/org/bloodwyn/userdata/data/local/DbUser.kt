@@ -1,27 +1,35 @@
 package org.bloodwyn.userdata.data.local
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.util.*
 
-@Entity(tableName = "user")
+@Entity(
+    tableName = "user",
+    primaryKeys = arrayOf("name", "value")
+)
 class DbUser(
-    var name: Name,
-    var gender: Gender,
-    var location: Location) {
+    @Embedded var id: Id
+) {
+    lateinit var firstName: String
 
-    lateinit var age: Age
+    lateinit var lastName: String
 
-    @PrimaryKey
-    lateinit var id: Id
+    @TypeConverters(DbUserConverter::class)
+    lateinit var gender: Gender
 
-    data class Name(
-         var firstName: String,
-         var lastName: String)
+    @TypeConverters(DbUserConverter::class)
+    lateinit var birthdayDate: Calendar
 
-    data class Location(var city: String, var street: String, var state: String, var postcode: Int)
+    var age: Int = 0
 
-    data class Age(var birthdayDate: Date, var age: Int)
+    lateinit var city: String
+
+    lateinit var street: String
+
+    lateinit var state: String
+
+    lateinit var postcode: String
+
 
     data class Id(val name: String, val value: String)
 
