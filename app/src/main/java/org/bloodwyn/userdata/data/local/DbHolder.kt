@@ -9,19 +9,16 @@ object DbHolder {
 
     private var appDatabase: UserInfoAppDatabase? = null
 
-    fun getDatabase(appContext: Context): UserInfoAppDatabase {
-        if (appDatabase == null) {
-            synchronized(this) {
-                if (appDatabase == null) {
-                    val db = Room.databaseBuilder(
-                        appContext,
-                        UserInfoAppDatabase::class.java,
-                        DATABASE_NAME).build()
-                    appDatabase = db
-                }
-            }
-        }
+    fun getDatabase(): UserInfoAppDatabase {
+        return requireNotNull(appDatabase) { "Db has not been created"}
+    }
 
-        return appDatabase!!
+    fun createDatabase(ctx: Context) {
+        val db = Room.databaseBuilder(
+                ctx.applicationContext,
+                UserInfoAppDatabase::class.java,
+                DATABASE_NAME)
+            .build()
+        appDatabase = db
     }
 }
