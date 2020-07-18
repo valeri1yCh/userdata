@@ -17,7 +17,7 @@ import java.lang.ClassCastException
 
 
 fun isRVAdapterHasChildCount(expected: Int): ViewAssertion {
-    return ViewAssertion { view: View, noMatchingViewException: NoMatchingViewException ->
+    return ViewAssertion { view: View, noMatchingViewException: NoMatchingViewException? ->
         val recyclerView =
             try {
                 view as RecyclerView

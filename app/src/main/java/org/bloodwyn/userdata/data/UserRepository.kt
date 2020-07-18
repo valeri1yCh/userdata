@@ -1,7 +1,8 @@
 package org.bloodwyn.userdata.data
 
-import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Maybe
+import io.reactivex.Single
+
 
 interface UserRepository {
 

@@ -1,6 +1,6 @@
 package org.bloodwyn.userdata.data.remote.services
 
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 import org.bloodwyn.userdata.data.remote.Users
 import retrofit2.Response
 import retrofit2.http.GET

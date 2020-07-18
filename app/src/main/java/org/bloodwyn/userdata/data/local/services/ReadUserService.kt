@@ -1,14 +1,14 @@
 package org.bloodwyn.userdata.data.local.services
 
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Single
 import org.bloodwyn.userdata.data.local.DbHolder
 import org.bloodwyn.userdata.data.local.DbUser
 
 class ReadUserService(
-    private val dao: ReadUserDao = DbHolder.getDatabase().userDao()
+    private val dao: ReadUserDao
 ) : ReadUserDao {
 
-    override fun findAllUsers(): Observable<List<DbUser>> {
+    override fun findAllUsers(): Single<List<DbUser>> {
         return dao.findAllUsers()
     }
 }

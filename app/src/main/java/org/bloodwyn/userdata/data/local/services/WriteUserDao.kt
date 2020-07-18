@@ -2,7 +2,7 @@ package org.bloodwyn.userdata.data.local.services
 
 import androidx.room.Dao
 import androidx.room.Insert
-import io.reactivex.rxjava3.core.Completable
+import io.reactivex.Completable
 import org.bloodwyn.userdata.data.local.DbUser
 
 /**

@@ -1,13 +1,11 @@
 package org.bloodwyn.userdata.data.remote.services
 
-import io.reactivex.rxjava3.core.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.bloodwyn.userdata.data.remote.Users
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
+
 
 class NetworkSimpleUserServiceTest {
 

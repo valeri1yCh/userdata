@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import org.bloodwyn.userdata.data.User
 import org.bloodwyn.userdata.data.UserRepository
 import org.bloodwyn.userdata.data.UserRepositoryImpl

@@ -4,7 +4,11 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
+import io.reactivex.observers.TestObserver
+import io.reactivex.subscribers.TestSubscriber
+import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
+import org.bloodwyn.userdata.data.local.DbUser
 import org.bloodwyn.userdata.data.local.UserInfoAppDatabase
 import org.junit.*
 import org.junit.runner.RunWith
@@ -13,19 +17,19 @@ import org.junit.runner.RunWith
 /**
  * The test class for [ReadUserService]
  */
-@RunWith(AndroidJUnit4::class)
-@SmallTest
 class ReadUserServiceTest {
 
     private lateinit var dataBase: UserInfoAppDatabase
     private lateinit var readUserService: ReadUserService
+
 
     @Before
     fun createBdAndUserDao() {
         dataBase = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
             UserInfoAppDatabase::class.java
-        ).allowMainThreadQueries().build()
+        ).allowMainThreadQueries()
+            .build()
         readUserService = ReadUserService(dataBase.userDao())
     }
 
@@ -33,16 +37,15 @@ class ReadUserServiceTest {
     fun populateDb() {
         val writeUserDao = dataBase.writeUserDao()
         writeUserDao.insertAll(createUsers())
+            .subscribe()
     }
 
     @Test
     fun findAllUsersTest() {
-        readUserService.findAllUsers()
+        val observable = readUserService.findAllUsers()
             .test()
             .assertComplete()
-            .assertValueCount(4)
-            .assertValues(createUsers())
-        assertTrue(false)
+            .assertValue(createUsers())
     }
 
     @After

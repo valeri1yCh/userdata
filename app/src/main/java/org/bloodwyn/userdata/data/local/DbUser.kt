@@ -4,20 +4,17 @@ import androidx.room.*
 import java.util.*
 
 @Entity(
-    tableName = "user",
-    primaryKeys = arrayOf("name", "value")
+    tableName = "user"
 )
-class DbUser(
-    @Embedded var id: Id
+data class DbUser(
+   @PrimaryKey @Embedded var id: Id
 ) {
     lateinit var firstName: String
 
     lateinit var lastName: String
 
-    @TypeConverters(DbUserConverter::class)
     lateinit var gender: Gender
 
-    @TypeConverters(DbUserConverter::class)
     lateinit var birthdayDate: Calendar
 
     var age: Int = 0
@@ -30,8 +27,7 @@ class DbUser(
 
     lateinit var postcode: String
 
-
-    data class Id(val name: String, val value: String)
+    data class Id(var name: String, var value: String)
 
     enum class Gender {
 

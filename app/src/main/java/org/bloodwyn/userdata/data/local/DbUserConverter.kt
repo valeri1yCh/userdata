@@ -8,7 +8,7 @@ import java.util.*
 class DbUserConverter {
 
     @TypeConverter
-    fun fromEnumToString(gender: Gender): String {
+    fun fromEnumToString(gender: Gender): String? {
         return gender.name
     }
 

@@ -1,8 +1,7 @@
 package org.bloodwyn.userdata.data
 
-import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Maybe
+import io.reactivex.Single
 import org.bloodwyn.userdata.data.remote.UserTransformer
 import org.bloodwyn.userdata.data.remote.services.SimpleNetworkUserServiceImpl
 import java.util.*
