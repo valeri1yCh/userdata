@@ -22,7 +22,6 @@ class ReadUserServiceTest {
     private lateinit var dataBase: UserInfoAppDatabase
     private lateinit var readUserService: ReadUserService
 
-
     @Before
     fun createBdAndUserDao() {
         dataBase = Room.inMemoryDatabaseBuilder(
@@ -36,16 +35,16 @@ class ReadUserServiceTest {
     @Before
     fun populateDb() {
         val writeUserDao = dataBase.writeUserDao()
-        writeUserDao.insertAll(createUsers())
+        writeUserDao.insertAll(users)
             .subscribe()
     }
 
     @Test
     fun findAllUsersTest() {
-        val observable = readUserService.findAllUsers()
+        readUserService.findAllUsers()
             .test()
             .assertComplete()
-            .assertValue(createUsers())
+            .assertValue(users)
     }
 
     @After

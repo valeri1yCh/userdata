@@ -1,6 +1,5 @@
 package org.bloodwyn.userdata.data.remote
 
-
 import com.google.gson.Gson
 import org.bloodwyn.userdata.data.remote.NetworkUser.*
 import org.bloodwyn.userdata.data.readFile
@@ -8,14 +7,12 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Test to convert [NetworkUser] to JSON format and vice versa
+ */
 class NetworkUserTest {
 
-    private lateinit var gson: Gson
-
-    @Before
-    fun setup() {
-        gson = Gson()
-    }
+    private val gson = Gson()
 
     @Test
     fun createNetworkUserFromJsonTest() {

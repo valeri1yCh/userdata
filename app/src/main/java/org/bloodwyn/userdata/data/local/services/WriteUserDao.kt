@@ -14,4 +14,8 @@ interface WriteUserDao {
 
     @Insert
     fun insertAll(users: List<DbUser>): Completable
+
+    @Insert
+    fun addUser(user: DbUser): Completable
+
 }

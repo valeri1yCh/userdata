@@ -3,9 +3,10 @@ package org.bloodwyn.userdata.data.local.services
 import org.bloodwyn.userdata.data.local.DbUser
 import org.bloodwyn.userdata.data.local.DbUser.Id
 import java.util.*
+import kotlin.collections.ArrayList
 
-fun createUsers(): List<DbUser> {
-    val user1 = DbUser(Id("ffx","12345678"))
+val users = ArrayList<DbUser>().apply {
+    val user1 = DbUser(Id("ffx", "12345678"))
     user1.firstName = "John"
     user1.lastName = "Smith"
     user1.age = 25
@@ -56,6 +57,8 @@ fun createUsers(): List<DbUser> {
     user4.street = "qaz"
     user4.state = "NY"
     user4.gender = DbUser.Gender.MALE
-
-    return arrayListOf(user1, user2, user3, user4)
+    add(user1)
+    add(user2)
+    add(user3)
+    add(user4)
 }
