@@ -43,4 +43,9 @@ class UsersFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onStart() {
+        viewModel.start()
+        super.onStart()
+    }
 }

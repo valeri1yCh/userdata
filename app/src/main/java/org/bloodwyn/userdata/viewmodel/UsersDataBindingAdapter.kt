@@ -9,6 +9,8 @@ import org.bloodwyn.userdata.view.user.UserAdapter
 @BindingAdapter("app:items")
 fun setData(usersView: RecyclerView, data: List<User>?) {
     data?.let {
-        val adapter = (usersView.adapter as UserAdapter).setUsers(it)
+        val adapter = (usersView.adapter as UserAdapter)
+        adapter.setUsers(it)
+        adapter.notifyDataSetChanged()
     }
 }

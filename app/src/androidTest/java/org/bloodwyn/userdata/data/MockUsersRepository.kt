@@ -2,6 +2,8 @@ package org.bloodwyn.userdata.data
 
 import io.reactivex.Maybe
 import io.reactivex.Single
+import org.bloodwyn.userdata.data.User.*
+import java.util.*
 
 
 /**
@@ -9,10 +11,10 @@ import io.reactivex.Single
  */
 class MockUsersRepository : UserRepository {
 
-    var userList: List<User> = generateRandomUsers()
+    private var users: List<User> = generateRandomUsers()
 
     override fun getUsers(): Single<List<User>> {
-        return Single.just(userList)
+        return Single.just(users)
     }
 
     override fun getUserInfo(userId: String): Maybe<User> {
@@ -21,42 +23,54 @@ class MockUsersRepository : UserRepository {
 
     private fun generateRandomUsers(count: Int = 3): List<User> {
         val user1 = User(
-            User.Name("brad", "gibson"),
-            User.Gender.MALE,
-            User.Location(
+            Name("brad", "gibson"),
+            Gender.MALE,
+            Location(
                 "kilcoole",
-                "Mill Lane",
+                Location.Street(12, "Mill Lane"),
                 "waterford",
                 "93027"
             )
-        )
-        user1.id = User.Id("PPS", "0390511T")
-        user1.phone = "011-962-7516"
+        ).apply {
+            id = Id("PPS", "0390511T")
+            phone = "011-962-7516"
+            val calendar = Calendar.getInstance()
+            calendar.set(1995, 1, 1)
+            age = Age(calendar, 25)
+        }
 
         val user2 = User(
-            User.Name("Valery", "Chursin"),
-            User.Gender.MALE,
-            User.Location(
+            Name("Valery", "Chursin"),
+            Gender.MALE,
+            Location(
                 "Sochi",
-                "Mayakovskogo",
+                Location.Street(13, "Mill Lane"),
                 "Krasn krai",
                 "354200"
             )
-        )
-        user2.id = User.Id("PPS", "234234234")
-        user2.phone = "999-123-1233"
+        ).apply {
+            id = Id("PPS", "234234234")
+            phone = "999-123-1233"
+            val calendar2 = Calendar.getInstance()
+            calendar2.set(1996, 1, 1)
+            age = Age(calendar2, 24)
+        }
 
         val user3 = User(
-            User.Name("John", "Smith"),
-            User.Gender.MALE,
-            User.Location(
+            Name("John", "Smith"),
+            Gender.MALE,
+            Location(
                 "New_York",
-                "GGC",
+                Location.Street(14, "Mill Lane"),
                 "New_York",
                 "2342234"
             )
-        )
-        user3.phone = "012-324-3249"
+        ).apply {
+            phone = "012-324-3249"
+            val calendar3 = Calendar.getInstance()
+            calendar3.set(1996, 1, 1)
+            age = Age(calendar3, 23)
+        }
 
         return arrayListOf(user1, user2, user3)
     }

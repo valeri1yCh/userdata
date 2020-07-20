@@ -35,7 +35,7 @@
         <TextView
             android:id="@+id/age"
             tools:text="Age: 30"
-            android:text="@{userViewModel.user.age.age}"
+            android:text="@{String.valueOf(userViewModel.user.age.age)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

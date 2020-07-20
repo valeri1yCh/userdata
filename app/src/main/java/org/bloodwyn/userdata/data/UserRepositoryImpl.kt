@@ -4,14 +4,11 @@ import io.reactivex.Maybe
 import io.reactivex.Single
 import org.bloodwyn.userdata.data.remote.UserTransformer
 import org.bloodwyn.userdata.data.remote.services.SimpleNetworkUserServiceImpl
-import java.util.*
 import kotlin.collections.ArrayList
 
 class UserRepositoryImpl : UserRepository {
 
-    private val userService: SimpleNetworkUserServiceImpl =
-        SimpleNetworkUserServiceImpl()
-
+    private val userService: SimpleNetworkUserServiceImpl = SimpleNetworkUserServiceImpl()
 
     override fun getUsers(): Single<List<User>> {
         val transformer = UserTransformer()

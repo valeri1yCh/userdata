@@ -17,11 +17,14 @@ data class User(
 
     data class Location(
         var city: String,
-        var street: String,
+        var street: Street,
         var state: String,
-        var postcode: String)
+        var postcode: String) {
 
-    data class Age(var birthdayDate: Date, var age: Int)
+        data class Street(var number: Int, var name: String)
+    }
+
+    data class Age(var birthdayDate: Calendar, var age: Int)
 
     data class Id(val name: String, val value: String)
 

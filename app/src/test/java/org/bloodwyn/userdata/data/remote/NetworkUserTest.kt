@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import org.bloodwyn.userdata.data.remote.NetworkUser.*
 import org.bloodwyn.userdata.data.readFile
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
 
 /**
@@ -26,7 +25,7 @@ class NetworkUserTest {
                 "93027"
             )
         )
-        expectedUser.id = Id("PPS", "0390511T")
+        expectedUser.id = UserId("PPS", "0390511T")
         expectedUser.phone = "011-962-7516"
 
         val jsonString =
@@ -43,15 +42,18 @@ class NetworkUserTest {
         val users = gson.fromJson(jsonString, Users::class.java)
         assertNotNull(users)
         assertTrue(users.results.isNotEmpty())
-        for (i in users.results) {
-            assertNotNull(i.name)
-            assertTrue(i.name.firstName.isNotBlank())
-            assertTrue(i.name.lastName.isNotBlank())
-            assertTrue(i.phone.isNotBlank())
-            assertNotNull(i.age)
-            assertTrue(i.gender.isNotBlank())
-            assertNotNull(i.location)
-            assertNotNull(i.id)
+        for (networkUser in users.results) {
+            assertNotNull(networkUser.name)
+            assertTrue(networkUser.name.firstName.isNotBlank())
+            assertTrue(networkUser.name.lastName.isNotBlank())
+            assertTrue(networkUser.phone.isNotBlank())
+            assertTrue(networkUser.age.age > 0)
+            assertTrue(networkUser.gender.isNotBlank())
+            assertNotNull(networkUser.location)
+            assertNotNull(networkUser.id.idName)
+            assertNotNull(networkUser.id.idValue)
+            assertTrue(networkUser.id.idName!!.isNotBlank())
+            assertTrue(networkUser.id.idValue!!.isNotBlank())
         }
     }
 }

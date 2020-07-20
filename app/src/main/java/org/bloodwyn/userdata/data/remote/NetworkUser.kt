@@ -14,7 +14,8 @@ data class NetworkUser(
     @SerializedName("phone")
     lateinit var phone: String
 
-    lateinit var id: Id
+    @SerializedName("id")
+    lateinit var id: UserId
 
     data class Name(
         @SerializedName("first") var firstName: String,
@@ -26,6 +27,6 @@ data class NetworkUser(
 
     data class Age(@SerializedName("date") var birthdayDate: Date, var age: Int)
 
-    data class Id(val name: String, val value: String)
+    data class UserId(@SerializedName("name") var idName: String?, @SerializedName("value")var idValue: String?)
 
 }
