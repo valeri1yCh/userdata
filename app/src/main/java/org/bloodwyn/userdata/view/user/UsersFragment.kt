@@ -7,15 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.bloodwyn.userdata.R
-import org.bloodwyn.userdata.data.UserRepositoryImpl
 import org.bloodwyn.userdata.databinding.UserListBinding
 import org.bloodwyn.userdata.utill.getViewModelFactory
-import org.bloodwyn.userdata.viewmodel.DefaultViewModelFactory
 import org.bloodwyn.userdata.viewmodel.UsersViewModel
 
 
@@ -45,7 +41,7 @@ class UsersFragment : Fragment() {
     }
 
     override fun onStart() {
-        viewModel.start()
+        viewModel.onActivityStarted()
         super.onStart()
     }
 }

@@ -13,18 +13,19 @@ class DbUserConverter {
     }
 
     @TypeConverter
-    fun fromStringToEnum(gender: String): DbUser.Gender {
+    fun fromStringToEnum(gender: String): Gender {
         return Gender.valueOf(gender)
     }
 
     @TypeConverter
     fun fromCalendarToString(birthDate: Calendar): String {
-        val sb = StringBuilder()
-        sb.append(birthDate.get(Calendar.YEAR))
-        sb.append("-")
-        sb.append(Calendar.MONTH)
-        sb.append("-")
-        sb.append(Calendar.DAY_OF_MONTH)
+        val sb = StringBuilder().apply {
+            append(birthDate.get(Calendar.YEAR))
+            append("-")
+            append(Calendar.MONTH)
+            append("-")
+            append(Calendar.DAY_OF_MONTH)
+        }
 
         return sb.toString()
     }

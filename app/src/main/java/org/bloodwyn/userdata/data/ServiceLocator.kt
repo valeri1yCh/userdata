@@ -1,6 +1,10 @@
 package org.bloodwyn.userdata.data
 
 import androidx.annotation.VisibleForTesting
+import org.bloodwyn.userdata.data.local.DbHolder
+import org.bloodwyn.userdata.data.local.services.ReadUserService
+import org.bloodwyn.userdata.data.remote.services.NetworkSimpleUserService
+import org.bloodwyn.userdata.data.remote.services.SimpleNetworkUserServiceImpl
 
 object ServiceLocator  {
 
@@ -10,7 +14,9 @@ object ServiceLocator  {
 
     fun provideRepository(): UserRepository {
         synchronized(this) {
-            return repository ?: repository ?: UserRepositoryImpl()
+            return repository ?: repository ?: UserRepositoryImpl(
+                ReadUserService(),
+                SimpleNetworkUserServiceImpl())
         }
     }
 }

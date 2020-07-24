@@ -23,7 +23,7 @@ class ReadUserServiceTest {
     private lateinit var readUserService: ReadUserService
 
     @Before
-    fun createBdAndUserDao() {
+    fun createDatabaseAndUserDao() {
         dataBase = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
             UserInfoAppDatabase::class.java
@@ -45,6 +45,15 @@ class ReadUserServiceTest {
             .test()
             .assertComplete()
             .assertValue(users)
+    }
+
+    @Test
+    fun findByIdTest() {
+        val user = users[0]
+        readUserService.findById(user.id.name, user.id.value)
+            .test()
+            .assertComplete()
+            .assertValue(user)
     }
 
     @After

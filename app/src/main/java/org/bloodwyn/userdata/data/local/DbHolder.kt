@@ -11,6 +11,7 @@ private const val DATABASE_NAME = "userinfo_app_database"
  */
 object DbHolder {
 
+    @Volatile
     lateinit var appDatabase: UserInfoAppDatabase
 
     fun createDatabase(ctx: Context) {

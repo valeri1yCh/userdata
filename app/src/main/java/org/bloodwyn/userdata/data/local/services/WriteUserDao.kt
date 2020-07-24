@@ -17,5 +17,4 @@ interface WriteUserDao {
 
     @Insert
     fun addUser(user: DbUser): Completable
-
 }

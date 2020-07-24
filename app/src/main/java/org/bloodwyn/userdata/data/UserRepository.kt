@@ -6,7 +6,9 @@ import io.reactivex.Single
 
 interface UserRepository {
 
-    fun getUsers() : Single<List<User>>
+    fun downloadNewUsers(): Single<List<User>>
 
-    fun getUserInfo(userId: String): Maybe<User>
+    fun getUsers(count: Int): Single<List<User>>
+
+    fun getUserInfo(id: User.Id): Maybe<User>
 }

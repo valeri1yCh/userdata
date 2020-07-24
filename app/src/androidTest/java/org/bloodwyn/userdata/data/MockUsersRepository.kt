@@ -13,7 +13,7 @@ class MockUsersRepository : UserRepository {
 
     private var users: List<User> = generateRandomUsers()
 
-    override fun getUsers(): Single<List<User>> {
+    override fun downloadNewUsers(): Single<List<User>> {
         return Single.just(users)
     }
 

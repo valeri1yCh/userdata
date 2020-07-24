@@ -22,6 +22,15 @@
             tools:itemCount="5"
             tools:listitem="@layout/user"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:src="@drawable/ic_action_refresh"
+            android:id="@+id/refresh"
+            android:onClick="@{usersViewModel::refreshData}"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </FrameLayout>
 
 </layout>
